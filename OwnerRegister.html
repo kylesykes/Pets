@@ -94,11 +94,12 @@
 		console.log(ownerObj);
 		fetch('https://bwp-python-webapp.herokuapp.com/owner', {
 			method: 'POST',
-			mode: 'no-cors',
+			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(ownerObj),
 		})
 		.then(function(response) {
-			console.log(response);
+			console.log(response)
+			window.location = "ViewOwner.html?"+"username="+ownerObj.username;
 		});
 	});
 </script>

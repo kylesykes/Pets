@@ -78,6 +78,18 @@
 </p>
 </div>
 
+<button id="search" type="button">Link Pet</button>
+
+<div id="searchResults" class="modal">
+    <div class="modal-content animate">
+        <div id="resultsHeader" class="container"></div>
+        <div id="resultsField" class="container"></div>
+        <div class="container">
+            <button type="button" onclick="resultsModal.style.display='none'; resultsDiv.innerHTML=''" class="cancelbtn">Cancel</button>
+        </div>
+    </div>
+</div>
+
 <div id="loadingIcon" class="modal">
     <div class="Aligner">
         <div class="Aligner-item">
@@ -93,6 +105,11 @@
 <script>
     var ownerForm = document.getElementById('ownerForm');
     var loadingModal = document.getElementById('loadingIcon');
+    var searchButton = document.getElementById("search");
+    var resultsModal = document.getElementById('searchResults');
+    var loadingModal = document.getElementById('loadingIcon');
+    var resultsDiv = document.getElementById("resultsField");
+    var resultsHeader = document.getElementById("resultsHeader");
 
     loadingModal.style.display="block";
 
@@ -122,5 +139,32 @@
         ownerForm[5].value = jsonObj.address;
         ownerForm[6].value = jsonObj.email;
         loadingModal.style.display="none";
+    });
+
+    searchButton.addEventListener("click", function() {
+        var resultsName = "Pets:";
+        var queryKey = "?name=";
+        var pageName = "ViewPet.html";
+
+        loadingModal.style.display="block";
+        searchType = "pet";
+
+        resultsHeader.innerHTML = "<h1>"+resultsName+"</h1>";
+        
+        fetch("https://bwp-python-webapp.herokuapp.com/"+searchType, {
+                method:"GET",
+            }).then(function(res){
+                    res.json().then(function(json){
+                        var contents = "";
+                        json.forEach(function(element) {
+                            var javaCommand = "";
+                            contents += "<button onclick=\"" + javaCommand + "\">" + element + "</button>";
+                        }, this);
+                        console.log(contents);
+                        resultsDiv.innerHTML = contents;
+                        loadingModal.style.display="none";
+                        resultsModal.style.display="block";
+                    })
+                })
     });
 </script>

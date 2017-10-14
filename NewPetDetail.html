@@ -8,78 +8,91 @@
 	<meta charset="utf-8">
 	<title>New Pet</title>
 
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
-<div id="wrapper"
-<div id="header"
+<div id="wrapper">
+<div id="header">
 <h2>Orange Mountain Kennel App</h2>
 </div>
 </div>
 
 
-<div id="container">
+<div id="container-fluid">
 <h3>Add New Pet</h3>
+<div class="row">
+  <div class="col-sm-4"></div>
 
-<form action="" method="POST" id="petData" >
+	<div class="col-sm-4">
+		<form action="" method="POST" id="petData" >
 
-<table >
-<tbody >
+		<table >
+		<tbody >
 
-<tr>
-<td><lable>Name</lable></td>
-<td><input type="text" name="name"/>
-</tr>
+		<tr>
+		<td><lable>Name</lable></td>
+		<td><input type="text" name="name"/></td>
+		</tr>
 
-<tr>
-<td><lable>Breed</lable></td>
-<td><input type="text" name="breed"/>
-</tr>
+		<tr>
+		<td><lable>Breed</lable></td>
+		<td><input type="text" name="breed"/></td>
+		</tr>
 
-<tr>
-<td><lable>Age</lable></td>
-<td><input type="text" name="age"/>
-</tr>
+		<tr>
+		<td><lable>Age</lable></td>
+		<td><input type="text" name="age"/></td>
+		</tr>
 
-<tr>
-<td><lable>Chipped</lable></td>
-<td><input type="text" name="chip"/>
-</tr>
+		<tr>
+		<td><lable>Chipped</lable></td>
+		<td><input type="text" name="chip"/></td>
+		</tr>
 
-<tr>
-<td><lable>Rescued or Surrendered?</label></td>
-<td><input type="text" name="howCheckedIn"/>
-<tr>
+		<tr>
+		<td><lable>Rescued or Surrendered?</label></td>
+		<td><input type="text" name="howCheckedIn"/></td>
+		<tr>
 
-<tr>
-<td><lable>Picture Upload</lable></td>
-<td>
-	<div class="container">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
-    </div>
-</td>
-</tr>
+		<tr>
+		<td><lable>Picture Upload</lable></td>
+		<td>
+			<div class="container">
+		      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
+		    </div>
+		</td>
+		</tr>
 
 
-<tr>
-<td><lable>Video Upload</lable></td>
-<td>
-	<div class="container">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
-    </div>
-</td>
-<tr>
+		<tr>
+		<td><lable>Video Upload</lable></td>
+		<td>
+			<div class="container">
+		      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
+		    </div>
+		</td>
+		<tr>
 
-<tr> 
-<td><input type="submit" value="Submit" class="save"/>
-</tr>
+		<tr> 
+		<td><input type="submit" value="Submit" class="save"/></td>
+		</tr>
 
-</tbody>
-</table>
+		</tbody>
+		</table>
 
-</form>
-
+		</form>
+	</div>
+<div class="col-sm-4">stuff and things</div>
+</div>	
 
 <div style="clear;both;"></div>
 

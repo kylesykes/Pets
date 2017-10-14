@@ -36,7 +36,7 @@
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">forgot password ?</a></span>
+      <span class="psw"><a href="#">Forgot password ?</a></span>
     </div>
   </form>
 </div>
@@ -53,11 +53,15 @@ window.onclick = function(event) {
 }
 
 function testvalidate(){
-  alert("Hello  World");
+
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
   if ( username == "user" && password == "pets"){
-     window.location = "NewPetDetail.html";
+    alert("Successful login");
+     window.location = "home.html";
    }else{
-    alert("Invalid login. Pleasse try again.";
+    alert("Invalid login. Please try again.");
    }
  
 }

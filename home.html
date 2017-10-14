@@ -12,18 +12,20 @@
 	<link rel="stylesheet" href="pets.css">
 	
     <body>
-        <div style="text-align: center;">
+        <div class="Aligner">
+        <div class="Aligner-item">
             Owner: <input type="radio" name="searchCategoty" id="searchCategoty" value="owner" checked="checked">
             Pet: <input type="radio" name="searchCategoty" id="searchCategoty" value="pet">
             <br />
             <button id="search" type="button">Search</button>
             <br />
             <button id="logout" type="button" class="cancelbtn">Logout</button>
-        <div style="text-align: center;">    
         <br />
         <br />
         <button id="registerNewPet" type="button">Register New Pet</button>
         <button id="registerNewOwner" type="button">Register New Owner</button>
+        </div>
+        </div>
     </body>
 </html>
 
@@ -35,9 +37,12 @@
         searchType = $('input[name="searchCategoty"]:checked').val();
         console.log("Connect to: " + "https://bwp-python-webapp.herokuapp.com/"+searchType);
         fetch("https://bwp-python-webapp.herokuapp.com/"+searchType, {
-                method:"GET"
+                method:"GET",
+                mode:"no-cors"
             }).then(function(res){
-                    console.log(res);
+                    res.text().then(function(text){
+                        console.log(text);
+                    })
                 })
     });
 
@@ -53,6 +58,6 @@
 
     registerNewOwner.addEventListener("click", function() {
         console.log("Register New Owner clicked");
-        document.location.href = "OwnerRegiser.html";
+        document.location.href = "OwnerRegister.html";
     });
 </script>

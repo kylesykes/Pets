@@ -8,9 +8,15 @@ body{
     color: white;
 }
 
+#petData{
+    text-align: center;
+    margin: 0 auto;
+    width:50% /* value of your choice which suits your alignment */
+}
 #search, #registerNewPet, #registerNewOwner{
     width: auto;
 }
+
 /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 100%;
@@ -34,6 +40,17 @@ button, #btn {
 
 button:hover {
     opacity: 0.8;
+}
+
+.Aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 62vh;
+}
+  
+.Aligner-item {
+    max-width: 50%;
 }
 
 /* Extra styles for the cancel button */

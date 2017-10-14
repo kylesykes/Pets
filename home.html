@@ -11,20 +11,25 @@
 
 	<link rel="stylesheet" href="pets.css">
 	
-<body>
-    <form action="">
+    <body>
         <div style="text-align: center;">
             Owner: <input type="radio" name="searchCategoty" id="searchCategoty" value="owner" checked="checked">
             Pet: <input type="radio" name="searchCategoty" id="searchCategoty" value="pet">
             <br />
-            <button id="search" type="button" onclick="" class="cancelbtn">Search</button>
+            <button id="search" type="button">Search</button>
+            <br />
+            <button id="logout" type="button" class="cancelbtn">Logout</button>
         <div style="text-align: center;">    
-    </form>
-</body>
+        <br />
+        <br />
+        <button id="registerNewPet" type="button">Register New Pet</button>
+        <button id="registerNewOwner" type="button">Register New Owner</button>
+    </body>
 </html>
 
 <script>
     var searchButton = document.getElementById("search");
+    var logoutButton = document.getElementById("logout");
 
     searchButton.addEventListener("click", function() {
         searchType = $('input[name="searchCategoty"]:checked').val();
@@ -34,5 +39,20 @@
             }).then(function(res){
                     console.log(res);
                 })
+    });
+
+    logoutButton.addEventListener("click", function() {
+        console.log("logout clicked");
+        document.location.href = "make.html";
+    });
+
+    registerNewPet.addEventListener("click", function() {
+        console.log("Register New Pet clicked");
+        document.location.href = "NewPetDetail.html";
+    });
+
+    registerNewOwner.addEventListener("click", function() {
+        console.log("Register New Owner clicked");
+        document.location.href = "OwnerRegiser.html";
     });
 </script>

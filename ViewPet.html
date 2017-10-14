@@ -22,7 +22,7 @@
 <div id="container">
 <h3>View Pet</h3>
 
-<form action="" method="POST">
+<form id="viewPet" action="" method="POST">
 
 <table>
 <tbody>
@@ -90,4 +90,31 @@
 </body>
 </html>
 
-
+<script>
+		var viewPet = document.getElementById('viewPet');
+	
+		function getParameterByName(name, url) {
+			if (!url) url = window.location.href;
+			name = name.replace(/[\[\]]/g, "\\$&");
+			var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+				results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+	
+		fetch('https://bwp-python-webapp.herokuapp.com/pet?name='+getParameterByName('name'), {
+			method: 'GET',
+			headers: { 'Content-Type': 'application/json' },
+		})
+		.then(function(response) {
+			return response.json();
+		})
+		.then(function(jsonObj) {
+			viewPet[0].value = jsonObj.name;
+			viewPet[1].value = jsonObj.breed;
+			viewPet[2].value = jsonObj.age;
+			viewPet[3].value = jsonObj.chipped;
+			viewPet[4].value = jsonObj.howCheckedIn;
+		});
+	</script>

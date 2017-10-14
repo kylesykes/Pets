@@ -6,7 +6,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 <style>
-
+  #animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+}
 </style>
 <body>
 
@@ -62,11 +67,27 @@ function validate(){
 
   if ( username == "user" && password == "pets"){
     alert("Successful login");
+    myMove();
     window.open("home.html");
    }else{
     alert("Invalid login. Please try again.");
    }
  
+}
+
+function myMove() {
+  var elem = document.getElementById("id01");   
+  var pos = 0;
+  var id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      elem.style.top = pos + 'px'; 
+      elem.style.left = pos + 'px'; 
+    }
+  }
 }
 
 </script>

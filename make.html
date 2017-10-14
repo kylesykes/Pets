@@ -17,7 +17,7 @@
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" id="form_id" name="petForm" action="" method="post">
+  <form class="modal-content animate" id="form_id" name="petForm" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="img/dog_avatar.jpg" alt="Avatar" class="avatar">
@@ -30,7 +30,7 @@
       <label id="loginLbl"><b>Password</b></label>
       <input type="password" id="password" placeholder="Enter Password" name="psw" required>
         
-      <button type="submit" value="Login" id="submit" onclick="validate()">Login</button>
+      <button type="submit" value="Login" id="submit" onclick="testvalidate()">Login</button>
       <input type="checkbox" checked="checked"><label style="color:blue;"> Remember me</label>
     </div>
 
@@ -50,6 +50,16 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+}
+
+function testvalidate(){
+  alert("Hello  World");
+  if ( username == "user" && password == "pets"){
+     window.location = "NewPetDetail.html";
+   }else{
+    alert("Invalid login. Pleasse try again.";
+   }
+ 
 }
 
 function validate(){

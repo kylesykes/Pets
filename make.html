@@ -3,6 +3,7 @@
     <head>
         <script src="pets.js"></script>
         <link rel="stylesheet" href="pets.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 <style>
 
@@ -61,7 +62,6 @@ function validate(){
 
   if ( username == "user" && password == "pets"){
     alert("Successful login");
-    $("id01").fadeOut();
     window.open("home.html");
    }else{
     alert("Invalid login. Please try again.");

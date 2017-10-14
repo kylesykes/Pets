@@ -30,11 +30,15 @@
 <div id="container">
 <h3>View Owner</h3>
 
+<<<<<<< HEAD
 <div class="row">
   <div class="col-sm-4"></div>
 
     <div class="col-sm-4">
 <form action="https://bwp-python-webapp.herokuapp.com/owner" method="POST">
+=======
+<form id="ownerForm">
+>>>>>>> origin/master
 
 <table>
 <tbody>
@@ -88,7 +92,7 @@
 <div style="clear;both;"></div>
 
 <p>
-	<a href="">Back to Home Page</a>
+	<a href="home.html">Back to Home Page</a>
 </p>
 </div>
 </body>
@@ -96,6 +100,8 @@
 
 
 <script>
+    var ownerForm = document.getElementById('ownerForm');
+
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -113,7 +119,13 @@
     .then(function(response) {
         return response.json();
     })
-    .then(function(json) {
-        console.log(json)
+    .then(function(jsonObj) {
+        ownerForm[0].value = jsonObj.username;
+        ownerForm[1].value = jsonObj.password;
+        ownerForm[2].value = jsonObj.firstName;
+        ownerForm[3].value = jsonObj.lastName;
+        ownerForm[4].value = jsonObj.phoneNumber;
+        ownerForm[5].value = jsonObj.address;
+        ownerForm[6].value = jsonObj.email;
     });
 </script>

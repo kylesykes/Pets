@@ -8,9 +8,15 @@ body{
     color: white;
 }
 
+#petData{
+    text-align: center;
+    margin: 0 auto;
+    width:50% /* value of your choice which suits your alignment */
+}
 #search, #registerNewPet, #registerNewOwner{
     width: auto;
 }
+
 /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 100%;

@@ -2,13 +2,11 @@
 
 <html>
 <head>
-
 <script src="pets.js"></script>
-       <link rel="stylesheet" href="pets.css">
+<link rel="stylesheet" href="pets.css">
 
 <meta charset="utf-8">
-<title>Update Owner</title>
-
+<title>View Owner</title>
 </head>
 
 <body>
@@ -21,7 +19,7 @@
 
 
 <div id="container">
-<h3>Update Owner</h3>
+<h3>View Owner</h3>
 
 <form action="https://bwp-python-webapp.herokuapp.com/owner" method="POST">
 
@@ -83,3 +81,25 @@
 </html>
 
 
+<script>
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    fetch('https://bwp-python-webapp.herokuapp.com/owner?username='+getParameterByName('username'), {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(json) {
+        console.log(json)
+    });
+</script>

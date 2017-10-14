@@ -22,7 +22,7 @@
 
 <div id="wrapper"
 <div id="header"
-<h2>Orange Mountain Kennel App</h2>
+<h1>Top Dog Information Systems</h1>
 </div>
 </div>
 
@@ -94,14 +94,29 @@
 	<a href="home.html">Back to Home Page</a>
 </p>
 </div>
+<<<<<<< HEAD
 <div class="col-sm-43"></div>
 </div>
+=======
+
+<div id="loadingIcon" class="modal">
+    <div class="Aligner">
+        <div class="Aligner-item">
+            <div class="loader">Loading...</div>
+        </div>
+    </div>
+</div>
+
+>>>>>>> origin/master
 </body>
 </html>
 
 
 <script>
     var ownerForm = document.getElementById('ownerForm');
+    var loadingModal = document.getElementById('loadingIcon');
+
+    loadingModal.style.display="block";
 
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -128,5 +143,6 @@
         ownerForm[4].value = jsonObj.phoneNumber;
         ownerForm[5].value = jsonObj.address;
         ownerForm[6].value = jsonObj.email;
+        loadingModal.style.display="none";
     });
 </script>

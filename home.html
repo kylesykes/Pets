@@ -11,21 +11,19 @@
 
 	<link rel="stylesheet" href="pets.css">
 	
-<body>
-    <form action="" method="GET">
+    <body>
         <div style="text-align: center;">
             Owner: <input type="radio" name="searchCategoty" id="searchCategoty" value="owner" checked="checked">
             Pet: <input type="radio" name="searchCategoty" id="searchCategoty" value="pet">
             <br />
-            <button id="search" type="button" >Search</button>
+            <button id="search" type="button">Search</button>
             <br />
             <button id="logout" type="button" class="cancelbtn">Logout</button>
         <div style="text-align: center;">    
-    </form>
-    <p>
-        <a href="NewPetDetail.html">To Pet Details</a>
-    </p>
-</body>
+        <br />
+        <br />
+        <button id="registerNewPet" type="button">Register New Pet</button>
+    </body>
 </html>
 
 <script>
@@ -44,6 +42,11 @@
 
     logoutButton.addEventListener("click", function() {
         console.log("logout clicked");
-        document.location.href = "../make.html";
+        document.location.href = "make.html";
+    });
+
+    registerNewPet.addEventListener("click", function() {
+        console.log("Register New Pet clicked");
+        document.location.href = "NewPetDetail.html";
     });
 </script>

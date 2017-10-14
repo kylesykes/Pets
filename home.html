@@ -12,17 +12,27 @@
 	<link rel="stylesheet" href="pets.css">
 	
 <body>
-
-    <div style="text-align: center;">
-        <button onclick="window.location.href='/NewPetDetail.html';" style="width:auto;">Register New Pet</button>
-        <br />
-        <button onclick="window.location.href='/NewPetDetail.html';" style="width:auto;">Register New Pet</button>
-        <br />
-        <button onclick="window.location.href='/medicalDetails.html';" style="width:auto;">Medical Details</button>
-        <br />
-        <button onclick="window.location.href='/make.html';" style="width:auto;">Logout</button>
-    <div style="text-align: center;">    
-
+    <form action="">
+        <div style="text-align: center;">
+            Owner: <input type="radio" name="searchCategoty" id="searchCategoty" value="owner" checked="checked">
+            Pet: <input type="radio" name="searchCategoty" id="searchCategoty" value="pet">
+            <br />
+            <button id="search" type="button" onclick="" class="cancelbtn">Search</button>
+        <div style="text-align: center;">    
+    </form>
 </body>
 </html>
-    
+
+<script>
+    var searchButton = document.getElementById("search");
+
+    searchButton.addEventListener("click", function() {
+        searchType = $('input[name="searchCategoty"]:checked').val();
+        console.log("Connect to: " + "https://bwp-python-webapp.herokuapp.com/"+searchType);
+        fetch("https://bwp-python-webapp.herokuapp.com/"+searchType, {
+                method:"GET"
+            }).then(function(res){
+                    console.log(res);
+                })
+    });
+</script>

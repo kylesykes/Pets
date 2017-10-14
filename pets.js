@@ -18,9 +18,21 @@ function loadDoc() {
   };
   xhttp.open("GET", "https://bwp-python-webapp.herokuapp.com/login", true);
   xhttp.send();
-}*/
+}
 
 $.get( "https://bwp-python-webapp.herokuapp.com/login", function( data ) {
   $( ".result" ).html( data );
   alert( "Load was performed." );
 });
+*/
+
+$("#submitlogin").click(function() {
+  inputs =   //grab then inputs of your form #loginform
+    $.ajax ({
+       url: "urltoyourloginphp.php",
+       data: inputs,
+       success: function() {
+        $("#login").html("You are now logged in!");
+    }
+  });
+})

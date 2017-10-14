@@ -2,8 +2,11 @@
 
 <html>
 <head>
-<meta charset="utf-8">
-<title>New Pet</title>
+	<script src="pets.js"></script>
+       <link rel="stylesheet" href="pets.css">
+
+	<meta charset="utf-8">
+	<title>New Pet</title>
 
 </head>
 
@@ -51,12 +54,21 @@
 
 <tr>
 <td><lable>Picture Upload</lable></td>
-<td><input type="file" name="pic" accept="image/*"/>
+<td>
+	<div class="container">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
+    </div>
+</td>
 </tr>
+
 
 <tr>
 <td><lable>Video Upload</lable></td>
-<td><input type="file" name="video" accept="video/*"/>
+<td>
+	<div class="container">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
+    </div>
+</td>
 <tr>
 
 <tr> 
@@ -72,7 +84,7 @@
 <div style="clear;both;"></div>
 
 <p>
-	<a href="">Back to Home Page</a>
+	<a href="make.html">Back to Home Page</a>
 </p>
 </div>
 </body>

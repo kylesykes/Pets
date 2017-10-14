@@ -68,10 +68,10 @@
         loadingModal.style.display="block";
         searchType = $('input[name="searchCategory"]:checked').val();
 
-        switch (searchType){
+        switch(searchType) {
             case "owner":
                 resultsName = "Owners:";
-                pageName = "ViewOwner";
+                pageName = "ViewOwner.html";
                 queryKey = "?username=";
                 break;
             case "pet":
@@ -79,7 +79,7 @@
                 pageName = "ViewPet.html";
                 queryKey = "?petID=";
                 break;
-            default: 
+            default:
                 loadingModal.style.display="none";
         }
 
@@ -91,8 +91,10 @@
                     res.json().then(function(json){
                         var contents = "";
                         json.forEach(function(element) {
-                            contents += "<a onclick='document.location.href='" + pageName + queryKey + element + "'';>" + element + "</a><br />";
+                            var javaCommand = "document.location.href='" + pageName + queryKey + element + "';";
+                            contents += "<button onclick=\"" + javaCommand + "\">" + element + "</button>";
                         }, this);
+                        console.log(contents);
                         resultsDiv.innerHTML = contents;
                         loadingModal.style.display="none";
                         resultsModal.style.display="block";

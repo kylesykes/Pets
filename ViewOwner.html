@@ -2,13 +2,7 @@
 
 <html>
 <head>
-
-<script src="pets.js"></script>
-<link rel="stylesheet" href="pets.css">
-
 <meta charset="utf-8">
-
-
 <title>New Owner</title>
 
 </head>
@@ -25,7 +19,7 @@
 <div id="container">
 <h3>Add New Owner</h3>
 
-<form id="registerForm" action="" method="POST">
+<form action="https://bwp-python-webapp.herokuapp.com/owner" method="POST">
 
 <table>
 <tbody>
@@ -56,7 +50,6 @@
 <tr>
 
 <tr>
-
 <td><lable>Address</label></td>
 <td><input type="text" name="address"/>
 <tr>
@@ -79,33 +72,10 @@
 <div style="clear;both;"></div>
 
 <p>
-	<a href="home.html">Back to Home Page</a>
+	<a href="">Back to Home Page</a>
 </p>
 </div>
 </body>
 </html>
 
-<script>
-	var registerForm = document.getElementById('registerForm');
-	registerForm.addEventListener('submit', function(ev) {
-		ev.preventDefault();
-		var ownerObj = {
-			username: ev.srcElement[0].value,
-			password: ev.srcElement[1].value,
-			firstName: ev.srcElement[2].value,
-			lastName: ev.srcElement[3].value,
-			phoneNumber: ev.srcElement[4].value,
-			address: ev.srcElement[5].value,
-			email: ev.srcElement[6].value,
-		};
-		console.log(ownerObj);
-		fetch('https://bwp-python-webapp.herokuapp.com/owner', {
-			method: 'POST',
-			mode: 'no-cors',
-			body: JSON.stringify(ownerObj),
-		})
-		.then(function(response) {
-			console.log(response);
-		});
-	});
-</script>
+

@@ -12,12 +12,14 @@
 	<link rel="stylesheet" href="pets.css">
 	
 <body>
-    <form action="">
+    <form action="" method="GET">
         <div style="text-align: center;">
             Owner: <input type="radio" name="searchCategoty" id="searchCategoty" value="owner" checked="checked">
             Pet: <input type="radio" name="searchCategoty" id="searchCategoty" value="pet">
             <br />
-            <button id="search" type="button" onclick="" class="cancelbtn">Search</button>
+            <button id="search" type="button">Search</button>
+            <br />
+            <button id="logout" type="button" class="cancelbtn">Logout</button>
         <div style="text-align: center;">    
     </form>
     <p>
@@ -28,6 +30,7 @@
 
 <script>
     var searchButton = document.getElementById("search");
+    var logoutButton = document.getElementById("logout");
 
     searchButton.addEventListener("click", function() {
         searchType = $('input[name="searchCategoty"]:checked').val();
@@ -37,5 +40,9 @@
             }).then(function(res){
                     console.log(res);
                 })
+    });
+
+    searchButton.addEventListener("click", function() {
+        console.log("logout clicked");
     });
 </script>

@@ -87,11 +87,38 @@
 	<a href="home.html">Back to Home Page</a>
 </p>
 </div>
+
+<button id="search" type="button">Link Owner</button>
+
+<div id="searchResults" class="modal">
+    <div class="modal-content animate">
+        <div id="resultsHeader" class="container"></div>
+        <div id="resultsField" class="container"></div>
+        <div class="container">
+            <button type="button" onclick="resultsModal.style.display='none'; resultsDiv.innerHTML=''" class="cancelbtn">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="loadingIcon" class="modal">
+    <div class="Aligner">
+        <div class="Aligner-item">
+            <div class="loader">Loading...</div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
 
 <script>
 		var viewPet = document.getElementById('viewPet');
+    var loadingModal = document.getElementById('loadingIcon');
+    var searchButton = document.getElementById("search");
+    var resultsModal = document.getElementById('searchResults');
+    var loadingModal = document.getElementById('loadingIcon');
+    var resultsDiv = document.getElementById("resultsField");
+    var resultsHeader = document.getElementById("resultsHeader");
 	
 		function getParameterByName(name, url) {
 			if (!url) url = window.location.href;
@@ -117,4 +144,31 @@
 			viewPet[3].value = jsonObj.chipped;
 			viewPet[4].value = jsonObj.howCheckedIn;
 		});
+
+	    searchButton.addEventListener("click", function() {
+        var resultsName = "Owners:";
+        var queryKey = "?name=";
+        var pageName = "ViewOwner.html";
+
+        loadingModal.style.display="block";
+        searchType = "owner";
+
+        resultsHeader.innerHTML = "<h1>"+resultsName+"</h1>";
+        
+        fetch("https://bwp-python-webapp.herokuapp.com/"+searchType, {
+                method:"GET",
+            }).then(function(res){
+                    res.json().then(function(json){
+                        var contents = "";
+                        json.forEach(function(element) {
+                            var javaCommand = "";
+                            contents += "<button onclick=\"" + javaCommand + "\">" + element + "</button>";
+                        }, this);
+                        console.log(contents);
+                        resultsDiv.innerHTML = contents;
+                        loadingModal.style.display="none";
+                        resultsModal.style.display="block";
+                    })
+                })
+    });
 	</script>

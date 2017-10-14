@@ -8,7 +8,7 @@ body{
     color: white;
 }
 
-#search{
+#search, #registerNewPet{
     width: auto;
 }
 /* Full-width input fields */

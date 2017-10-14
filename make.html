@@ -10,9 +10,11 @@
 <body>
 
 <div id="main">
+<div id="topdog">  
 <h2 id="title">Pet Login</h2>
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+</div>
 </div>
 
 <div id="id01" class="modal">
@@ -30,7 +32,7 @@
       <label id="loginLbl"><b>Password</b></label>
       <input type="password" id="password" placeholder="Enter Password" name="psw" required>
         
-      <button type="submit" value="Login" id="submit" onclick="testvalidate()">Login</button>
+      <button type="submit" value="Login" id="submit" onclick="validate()">Login</button>
       <input type="checkbox" checked="checked"><label style="color:blue;"> Remember me</label>
     </div>
 
@@ -52,13 +54,14 @@ window.onclick = function(event) {
     }
 }
 
-function testvalidate(){
+function validate(){
 
   var username = document.getElementById("username").value;
   var password = document.getElementById("password").value;
 
   if ( username == "user" && password == "pets"){
     alert("Successful login");
+    $("id01").fadeOut();
     window.open("home.html");
    }else{
     alert("Invalid login. Please try again.");
@@ -66,20 +69,6 @@ function testvalidate(){
  
 }
 
-function validate(){
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
-  if ( username == "user" && password == "pets"){
-  alert ("Login successfully");
-  location.href = 'home.html'; // Redirecting to other page.
-  //window.location = "home.html";  
- 
-  }
-    else{
-      alert("keep a' knockin' but ya can't come in....");
-      return false;
-    }
-}
 </script>
 
 </body>

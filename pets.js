@@ -7,25 +7,29 @@ window.onclick = function(event) {
     }
 }
 
-// login
+//////////////////////////////////
+//// Main Administrator Login ////
+
 /*
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     document.getElementById("main").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "https://bwp-python-webapp.herokuapp.com/login", true);
-  xhttp.send();
+var attempt = 3; // Variable to count number of attempts.
+// Below function Executes on click of login button.
+function validate(){
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+if ( username == "user" && password == "pets"){
+alert ("Login successfully");
+window.location.href = 'home.html'; // Redirecting to other page.
+//window.location = "home.html";  
+return false;
+}
+	else{
+		alert("keep a' knockin' but ya can't come in....")
+		return false;
+	}
+}
 }
 
-$.get( "https://bwp-python-webapp.herokuapp.com/login", function( data ) {
-  $( ".result" ).html( data );
-  alert( "Load was performed." );
-});
-*/
-
+/*
 $("#submitlogin").click(function() {
   inputs =   //grab then inputs of your form #loginform
     $.ajax ({
@@ -36,3 +40,4 @@ $("#submitlogin").click(function() {
     }
   });
 })
+*/

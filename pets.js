@@ -6,3 +6,21 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+// login
+/*
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("main").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "https://bwp-python-webapp.herokuapp.com/login", true);
+  xhttp.send();
+}*/
+
+$.get( "https://bwp-python-webapp.herokuapp.com/login", function( data ) {
+  $( ".result" ).html( data );
+  alert( "Load was performed." );
+});

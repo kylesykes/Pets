@@ -1,4 +1,11 @@
-<style>
+body{
+     background: url('img/th.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+    text-align: center;
+}
 /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 100%;
@@ -11,7 +18,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-    background-color: #4CAF50;
+    background-color: #569cea;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -117,4 +124,3 @@ span.psw {
        width: 100%;
     }
 }
-</style>

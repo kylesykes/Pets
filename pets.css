@@ -5,10 +5,10 @@ body{
   background-size: cover;
   -o-background-size: cover;
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
-#search, #registerNewPet, #registerNewOwner{
+#search{
     width: auto;
 }
 /* Full-width input fields */

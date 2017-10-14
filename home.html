@@ -12,36 +12,90 @@
 	<link rel="stylesheet" href="pets.css">
 	
     <body>
+        <h1>Top Dog Information Systems</h1>
         <div class="Aligner">
-        <div class="Aligner-item">
-            Owner: <input type="radio" name="searchCategoty" id="searchCategoty" value="owner" checked="checked">
-            Pet: <input type="radio" name="searchCategoty" id="searchCategoty" value="pet">
+            <div class="Aligner-item">
+                <h3>Search By:</h3>
+                <h4>
+                Owner: <input type="radio" name="searchCategory" id="searchCategory" value="owner" checked="checked">
+                Pet: <input type="radio" name="searchCategory" id="searchCategory" value="pet">
+                </h4>
+                <button id="search" type="button">Search</button>
             <br />
-            <button id="search" type="button">Search</button>
+            <br />
+            <button id="registerNewPet" type="button">Register New Pet</button>
+            <br />
+            <button id="registerNewOwner" type="button">Register New Owner</button>
             <br />
             <button id="logout" type="button" class="cancelbtn">Logout</button>
-        <br />
-        <br />
-        <button id="registerNewPet" type="button">Register New Pet</button>
-        <button id="registerNewOwner" type="button">Register New Owner</button>
+            </div>
         </div>
+
+        <div id="searchResults" class="modal">
+            <div class="modal-content animate">
+                <div id="resultsHeader" class="container"></div>
+                <div id="resultsField" class="container"></div>
+                <div class="container">
+                    <button type="button" onclick="resultsModal.style.display='none'; resultsDiv.innerHTML=''" class="cancelbtn">Cancel</button>
+                </div>
+            </div>
         </div>
+
+        <div id="loadingIcon" class="modal">
+            <div class="modal-content animate">
+                <div class="container">
+                     <h1>Loading</h1>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>
 
 <script>
     var searchButton = document.getElementById("search");
     var logoutButton = document.getElementById("logout");
+    var resultsModal = document.getElementById('searchResults');
+    var loadingModal = document.getElementById('loadingIcon');
+    var resultsDiv = document.getElementById("resultsField");
+    var resultsHeader = document.getElementById("resultsHeader");
 
     searchButton.addEventListener("click", function() {
-        searchType = $('input[name="searchCategoty"]:checked').val();
-        console.log("Connect to: " + "https://bwp-python-webapp.herokuapp.com/"+searchType);
+        var resultsName = "";
+        var queryKey = "";
+        var pageName = "";
+
+        loadingModal.style.display="block";
+        searchType = $('input[name="searchCategory"]:checked').val();
+
+        switch (searchType){
+            case "owner":
+                resultsName = "Owners:";
+                pageName = "ViewOwner";
+                queryKey = "?username=";
+                break;
+            case "pet":
+                resultsName = "Pets:";
+                pageName = "ViewPet.html";
+                queryKey = "?petID=";
+                break;
+            default: 
+                loadingModal.style.display="none";
+        }
+
+        resultsHeader.innerHTML = "<h1>"+resultsName+"</h1>";
+        
         fetch("https://bwp-python-webapp.herokuapp.com/"+searchType, {
                 method:"GET",
-                mode:"no-cors"
             }).then(function(res){
-                    res.text().then(function(text){
-                        console.log(text);
+                    res.json().then(function(json){
+                        var contents = "";
+                        json.forEach(function(element) {
+                            contents += "<a onclick='document.location.href='" + pageName + queryKey + element + "'';>" + element + "</a><br />";
+                        }, this);
+                        resultsDiv.innerHTML = contents;
+                        loadingModal.style.display="none";
+                        resultsModal.style.display="block";
                     })
                 })
     });

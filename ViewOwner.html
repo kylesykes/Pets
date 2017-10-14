@@ -77,12 +77,24 @@
 	<a href="home.html">Back to Home Page</a>
 </p>
 </div>
+
+<div id="loadingIcon" class="modal">
+    <div class="modal-content animate">
+        <div class="container">
+            <h1>Loading</h1>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
 
 
 <script>
     var ownerForm = document.getElementById('ownerForm');
+    var loadingModal = document.getElementById('loadingIcon');
+
+    loadingModal.style.display="block";
 
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -109,5 +121,6 @@
         ownerForm[4].value = jsonObj.phoneNumber;
         ownerForm[5].value = jsonObj.address;
         ownerForm[6].value = jsonObj.email;
+        loadingModal.style.display="none";
     });
 </script>

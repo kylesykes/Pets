@@ -8,12 +8,20 @@
 	<meta charset="utf-8">
 	<title>View Pet</title>
 
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
-<div id="wrapper"
-<div id="header"
+<div id="wrapper">
+<div id="header">
 <h2>Orange Mountain Kennel App</h2>
 </div>
 </div>
@@ -21,8 +29,12 @@
 
 <div id="container">
 <h3>View Pet</h3>
+<div class="row">
+  <div class="col-sm-4"></div>
 
-<form action="" method="POST">
+	<div class="col-sm-4">
+
+<form action="" method="POST" id="petData">
 
 <table>
 <tbody>
@@ -55,9 +67,10 @@
 <tr>
 <td><lable>Pictures</lable></td>
 <td>
-	<div class="container">
+	<div class="">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
     </div>
+    <p></p>
 </td>
 </tr>
 
@@ -65,7 +78,7 @@
 <tr>
 <td><lable>Videos</lable></td>
 <td>
-	<div class="container">
+	<div class="">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
     </div>
 </td>
@@ -79,7 +92,8 @@
 </table>
 
 </form>
-
+</div>
+<div class="col-sm-43"></div>
 
 <div style="clear;both;"></div>
 

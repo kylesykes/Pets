@@ -182,9 +182,10 @@
                         var contents = "";
                         json.forEach(function(element) {
 							var components = element.split(':');
-							var ownerName = components[0];
+							var firstName = components[0];
+							var lastName = components[1];
                             var javaCommand = "onOwnerClicked('" + element + "')";
-                            contents += "<button onclick=\"" + javaCommand + "\">" + ownerName + "</button>";
+                            contents += "<button onclick=\"" + javaCommand + "\">" + firstName + " " + lastName + "</button>";
                         }, this);
                         console.log(contents);
                         resultsDiv.innerHTML = contents;

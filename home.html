@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html>
 
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-      <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    </head>
 	
-    <body onload="load();">
+    <body onload="load();">                        
 
         <nav class="nav-extended">
             <div class="nav-wrapper">
             <a href="#" class="brand-logo">Top Dog Information Systems</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="make.html">Logout</a></li>
+                <li><a href="login.html">Logout</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li><a href="make.html">Logout</a></li>
+                <li><a href="login.html">Logout</a></li>
             </ul>
             </div>
             <div class="nav-content">
@@ -33,13 +37,13 @@
             </div>
         </nav>
         <div id="test1" class="col s12">
-            <a href="NewPetDetail.html" class="waves-effect waves-light btn-large">Register New Pet</a>
+            <a href="NewPetDetail.html" class="waves-effect waves-light btn-large"><i class="material-icons">add</i>Register New Pet</a>
             <h2>Pets</h2>
             <div id="petResults" class="collection">
             </div>
         </div>
         <div id="test2" class="col s12">
-            <a href="OwnerRegister.html" class="waves-effect waves-light btn-large">Register New Owner</a>
+            <a href="OwnerRegister.html" class="waves-effect waves-light btn-large"><i class="material-icons">add</i>Register New Owner</a>
             <h2>Owners</h2>
             <div id="ownerResults" class="collection">
             </div>

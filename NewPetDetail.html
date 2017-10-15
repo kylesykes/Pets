@@ -119,8 +119,11 @@
 				body: JSON.stringify(petObj),
 			})
 			.then(function(response) {
-				console.log(response)
-				window.location = "ViewPet.html?"+"name="+petObj.name;
+				return response.json();
+			})
+			.then(function(json) {
+				console.log(json)
+				window.location = "ViewPet.html?"+"pet_id="+json.name+":"+json.pet_id;
 			});
 		});
 	</script>

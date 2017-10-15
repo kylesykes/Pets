@@ -7,42 +7,52 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="pets.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+      <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	
-    <body>
-        <h1>Top Dog Information Systems</h1>
-        <div class="Aligner">
-            <div class="Aligner-item">
-                <h3>Search By:</h3>
-                <h4>
-                Owner: <input type="radio" name="searchCategory" id="searchCategory" value="owner" checked="checked">
-                Pet: <input type="radio" name="searchCategory" id="searchCategory" value="pet">
-                </h4>
-                <button id="search" type="button">Search</button>
-            <br />
-            <br />
-            <button id="registerNewPet" type="button">Register New Pet</button>
-            <br />
-            <button id="registerNewOwner" type="button">Register New Owner</button>
-            <br />
-            <button id="logout" type="button" class="cancelbtn">Logout</button>
+    <body onload="load();">
+
+        <nav class="nav-extended">
+            <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Top Dog Information Systems</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="make.html">Logout</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="make.html">Logout</a></li>
+            </ul>
+            </div>
+            <div class="nav-content">
+            <ul class="tabs tabs-transparent">
+                <li id="petTab" class="tab"><a class="active" href="#test1">Pets</a></li>
+                <li id="ownerTab" class="tab"><a href="#test2">Owners</a></li>
+            </ul>
+            </div>
+        </nav>
+        <div id="test1" class="col s12">
+            <a href="NewPetDetail.html" class="waves-effect waves-light btn-large">Register New Pet</a>
+            <h2>Pets</h2>
+            <div id="petResults" class="collection">
+            </div>
+        </div>
+        <div id="test2" class="col s12">
+            <a href="OwnerRegister.html" class="waves-effect waves-light btn-large">Register New Owner</a>
+            <h2>Owners</h2>
+            <div id="ownerResults" class="collection">
             </div>
         </div>
 
-        <div id="searchResults" class="modal">
-            <div class="modal-content animate">
-                <div id="resultsHeader" class="container"></div>
-                <div id="resultsField" class="container"></div>
-                <div class="container">
-                    <button type="button" onclick="resultsModal.style.display='none'; resultsDiv.innerHTML=''" class="cancelbtn">Cancel</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="loadingIcon" class="modal">
-            <div class="Aligner">
-                <div class="Aligner-item">
-                    <div class="loader">Loading...</div>
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
                 </div>
             </div>
         </div>
@@ -51,67 +61,61 @@
 </html>
 
 <script>
+    var ownerTab = document.getElementById("ownerTab");
+    var petTab = document.getElementById("petTab");
+    var petResultsDiv = document.getElementById("petResults");
+    var ownerResultsDiv = document.getElementById("ownerResults");
     var logoutButton = document.getElementById("logout");
-    var searchButton = document.getElementById("search");
-    var resultsModal = document.getElementById('searchResults');
-    var loadingModal = document.getElementById('loadingIcon');
-    var resultsDiv = document.getElementById("resultsField");
-    var resultsHeader = document.getElementById("resultsHeader");
 
-    searchButton.addEventListener("click", function() {
-        var resultsName = "";
-        var queryKey = "";
-        var pageName = "";
+    function load(){
+        loadOwners();
+        loadPets();
+    }
 
-        loadingModal.style.display="block";
-        searchType = $('input[name="searchCategory"]:checked').val();
+    $(window).on('load', function() {
+            $('.preloader').delay(350).fadeOut('slow');
+            $('.preloader-wrapper').delay(350).fadeOut();
+    });
 
-        switch(searchType) {
-            case "owner":
-                resultsName = "Owners:";
-                pageName = "ViewOwner.html";
-                queryKey = "?username=";
-                break;
-            case "pet":
-                resultsName = "Pets:";
-                pageName = "ViewPet.html";
-                queryKey = "?pet_id=";
-                break;
-            default:
-                loadingModal.style.display="none";
-        }
-
-        resultsHeader.innerHTML = "<h1>"+resultsName+"</h1>";
+    function loadOwners() {
+        var resultsName = "Owners:";
+        var pageName = "ViewOwner.html";
+        var queryKey = "?username=";
+        var searchType = "owner";
+        var contents ="";
         
         fetch("https://bwp-python-webapp.herokuapp.com/"+searchType, {
                 method:"GET",
             }).then(function(res){
                     res.json().then(function(json){
-                        var contents = "";
                         json.forEach(function(element) {
-                            var javaCommand = "document.location.href='" + pageName + queryKey + element + "';";
-                            contents += "<button onclick=\"" + javaCommand + "\">" + element + "</button>";
+                            var pageAddress = pageName + queryKey + element;
+                            contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + element + "</a>";
                         }, this);
-                        console.log(contents);
-                        resultsDiv.innerHTML = contents;
-                        loadingModal.style.display="none";
-                        resultsModal.style.display="block";
+                        ownerResultsDiv.innerHTML = contents;
                     })
                 })
-    });
+        return 0;
+    }
 
-    logoutButton.addEventListener("click", function() {
-        console.log("logout clicked");
-        document.location.href = "make.html";
-    });
-
-    registerNewPet.addEventListener("click", function() {
-        console.log("Register New Pet clicked");
-        document.location.href = "NewPetDetail.html";
-    });
-
-    registerNewOwner.addEventListener("click", function() {
-        console.log("Register New Owner clicked");
-        document.location.href = "OwnerRegister.html";
-    });
+    function loadPets() {
+        var resultsName = "Owners:";
+        var pageName = "ViewPet.html";
+        var queryKey = "?pet_id=";
+        var searchType = "pet";
+        var contents ="";
+        
+        fetch("https://bwp-python-webapp.herokuapp.com/"+searchType, {
+                method:"GET",
+            }).then(function(res){
+                    res.json().then(function(json){
+                        json.forEach(function(element) {
+                            var pageAddress = pageName + queryKey + element;
+                            contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + element + "</a>";
+                        }, this);
+                        petResultsDiv.innerHTML = contents;
+                    })
+                })
+        return 0;
+    }
 </script>

@@ -8,32 +8,45 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="pets.css">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-      <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	
     <body>
-        <nav class="nav-extended">
-            <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Top Dog Information Systems</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a id="logout" href="">Logout</a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-                <li><a id="logout" href="">Logout</a></li>
-            </ul>
+        <h1>Top Dog Information Systems</h1>
+        <div class="Aligner">
+            <div class="Aligner-item">
+                <h3>Search By:</h3>
+                <h4>
+                Owner: <input type="radio" name="searchCategory" id="searchCategory" value="owner" checked="checked">
+                Pet: <input type="radio" name="searchCategory" id="searchCategory" value="pet">
+                </h4>
+                <button id="search" type="button">Search</button>
+            <br />
+            <br />
+            <button id="registerNewPet" type="button">Register New Pet</button>
+            <br />
+            <button id="registerNewOwner" type="button">Register New Owner</button>
+            <br />
+            <button id="logout" type="button" class="cancelbtn">Logout</button>
             </div>
-            <div class="nav-content">
-            <ul class="tabs tabs-transparent">
-                <li class="tab"><a class="active" href="#test1">Pets</a></li>
-                <li class="tab"><a href="#test2">Owners</a></li>
-            </ul>
+        </div>
+
+        <div id="searchResults" class="modal">
+            <div class="modal-content animate">
+                <div id="resultsHeader" class="container"></div>
+                <div id="resultsField" class="container"></div>
+                <div class="container">
+                    <button type="button" onclick="resultsModal.style.display='none'; resultsDiv.innerHTML=''" class="cancelbtn">Cancel</button>
+                </div>
             </div>
-        </nav>
-        <div id="test1" class="col s12">Test 1</div>
-        <div id="test2" class="col s12">Test 2</div>
+        </div>
+
+        <div id="loadingIcon" class="modal">
+            <div class="Aligner">
+                <div class="Aligner-item">
+                    <div class="loader">Loading...</div>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>
 
@@ -62,7 +75,7 @@
             case "pet":
                 resultsName = "Pets:";
                 pageName = "ViewPet.html";
-                queryKey = "?name=";
+                queryKey = "?pet_id=";
                 break;
             default:
                 loadingModal.style.display="none";

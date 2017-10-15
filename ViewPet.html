@@ -1,96 +1,95 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-	<script src="pets.js"></script>
-       <link rel="stylesheet" href="pets.css">
-
-	<meta charset="utf-8">
-	<title>Update Pet</title>
-
-</head>
+		<head>
+				<script src="pets.js"></script>
+			
+				<meta charset="utf-8">
+				<title>Update Pet</title>
+				<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+				<!-- jQuery library -->
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+				<!-- Latest compiled JavaScript -->
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+				<!-- Compiled and minified CSS -->
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+				<!-- Compiled and minified JavaScript -->
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+			</head>
 
 <body>
 
-<div id="wrapper">
-<div id="header">
-<h1>Top Dogs Information Systems</h1>
-</div>
-</div>
+		<nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo center">Top Dog Information Systems</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="info.html">Info</a></li>
+                    </ul>
+                </div>
+            </nav>
 
 
-<div id="container">
-<h3>Update Pet</h3>
-
-<form id="viewPet" method="POST">
-
-<table>
-<tbody>
-
-<tr>
-<td><lable>Name</lable></td>
-<td><input type="text" name="name"/>
-</tr>
-
-<tr>
-<td><lable>Breed</lable></td>
-<td><input type="text" name="breed"/>
-</tr>
-
-<tr>
-<td><lable>Age</lable></td>
-<td><input type="text" name="age"/>
-</tr>
-
-<tr>
-<td><lable>Chipped</lable></td>
-<td><input type="text" name="chip"/>
-</tr>
-
-<tr>
-<td><lable>Rescued or Surrendered?</label></td>
-<td><input type="text" name="howCheckedIn"/>
-<tr>
-
-<ul id= "petsList">
-
-</ul>
-
-<tr>
-<td><lable>Pictures</lable></td>
-<td>
-	<div class="container">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
-    </div>
-</td>
-</tr>
-
-
-<tr>
-<td><lable>Videos</lable></td>
-<td>
-	<div class="container">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
-    </div>
-</td>
-<tr>
-
-<tr> 
-<td><input type="submit" value="Update" class="save"/>
-</tr>
-
-</tbody>
-</table>
-
-</form>
-
-
-<div style="clear;both;"></div>
-
-<p>
-	<a href="home.html">Back to Home Page</a>
-</p>
-</div>
+<div style="margin-left: 10%; margin-right: 10%; margin-top: 5%;">
+	<h4>Update Pet Info</h4>
+	<div class="row">
+		<form class="col s12" method="POST" id="viewPet">
+			<div class="row">
+							<div class="input-field col s6">
+								<i class="material-icons prefix">person</i>
+								<input placeholder="Name" name="name" type="text" class="validate">
+								<label for="name"> Name</label>
+							</div>
+				
+							<div class="input-field col s6">
+								<i class="material-icons prefix">pets</i>
+								<input placeholder="Breed" name="breed" type="text" class="validate">
+								<label for="name"> Breed</label>
+							</div>
+							
+							<div class="input-field col s6">
+								<i class="material-icons prefix">alarm</i>
+								<input placeholder="Age" name="age" type="text" class="validate">
+								<label for="name"> Age</label>
+							</div>
+							
+							<div class="input-field col s6">
+								<i class="material-icons prefix">track_changes</i>
+								<input placeholder="Chip ID" name="chip" type="text" class="validate">
+								<label for="name"> Chip ID</label>
+							</div>
+							
+							<div class="input-field col s6">
+								<i class="material-icons prefix">transfer_within_a_station</i>
+								<input placeholder="Rescued or Surrendered?" name="howCheckedIn" type="text" class="validate">
+								<label for="name"> Rescued or Surrendered?</label>
+							</div>
+				
+							<div class="input-field col s6">
+								<t5>Upload Picture</t5>
+								<button class="btn waves-effect waves-light" name="action" onclick="'">Choose File
+									<i class="material-icons right">add</i>
+								</button>
+							</div>
+				
+							<div class="input-field col s6">
+								<t5>Upload Picture</t5>
+								<button class="btn waves-effect waves-light" name="action" onclick="'">Choose File
+									<i class="material-icons right">add</i>
+								</button>
+							</div>
+				<div class="col-sm-43"></div>
+				
+				<div style="clear:both;"></div>
+				
+				<p>
+					<button type="submit" value="Update" class="btn waves-effect waves-light" name="action" >Submit
+						<i class="material-icons right">send</i>
+					</button>
+					<a class="btn waves-effect waves-light" name="action" href="home.html"><i class="material-icons right">cancel</i> Cancel</a>
+				</p>
+				</form>
+				</div>
+				</div>
 
 <button id="search" type="button">Link Owner</button>
 

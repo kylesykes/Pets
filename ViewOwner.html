@@ -179,8 +179,10 @@
                     res.json().then(function(json){
                         var contents = "";
                         json.forEach(function(element) {
+                            var components = element.split(':');
+                            var petName = components[0]
                             var javaCommand = "onPetClicked('" + element + "')";
-                            contents += "<button onclick=\"" + javaCommand + "\">" + element + "</button>";
+                            contents += "<button onclick=\"" + javaCommand + "\">" + petName + "</button>";
                         }, this);
                         console.log(contents);
                         resultsDiv.innerHTML = contents;

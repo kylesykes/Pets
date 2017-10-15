@@ -30,15 +30,11 @@
                 </div>
             </nav>
 
-
             <div style="margin-left: 10%; margin-right: 10%; margin-top: 5%;">
                     <h4>Update Owner</h4>
                     <div class="row">
                     <form class="col s12" method="POST" id="ownerForm">
                         <div class="row">
-
-	<form class="col s12" method="POST" id="registerForm">
-		<div class="row">
 
 		<div class="input-field col s6">
 			<i class="material-icons prefix">account_circle</i>
@@ -94,28 +90,15 @@
 </p>
 </form>
 </div>
-</div>
 
-<button id="search" type="button">Link Pet</button>
-
-<div id="searchResults" class="modal">
-    <div class="modal-content animate">
-        <div id="resultsHeader" class="container"></div>
-        <div id="resultsField" class="container"></div>
-        <div class="container">
-            <button type="button" onclick="resultsModal.style.display='none'; resultsDiv.innerHTML=''" class="cancelbtn">Cancel</button>
+<div id="test1" class="col s12">
+        <button id="linkPets" class="waves-effect waves-light btn-large"><i class="material-icons">insert_link</i>Link Pet</button>                 
+        <div id="petResults" class="collection">
         </div>
-    </div>
-</div>
-
-<div id="loadingIcon" class="modal">
-    <div class="Aligner">
-        <div class="Aligner-item">
-            <div class="loader">Loading...</div>
         </div>
-    </div>
 </div>
 
+</div>
 </body>
 </html>
 
@@ -128,9 +111,12 @@
     var loadingModal = document.getElementById('loadingIcon');
     var resultsDiv = document.getElementById("resultsField");
     var resultsHeader = document.getElementById("resultsHeader");
-    var petList = document.getElementById("petList")
+    var petList = document.getElementById("petList");
+    var linkPets = document.getElementById("linkPets");
+    var petResultsDiv = document.getElementById("petResults");
+    
 
-    loadingModal.style.display="block";
+    //loadingModal.style.display="block";
 
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -157,7 +143,7 @@
         ownerForm[4].value = jsonObj.phoneNumber;
         ownerForm[5].value = jsonObj.address;
         ownerForm[6].value = jsonObj.email;
-        loadingModal.style.display="none";
+        //loadingModal.style.display="none";
     });
 
     function onPetClicked(petName) {
@@ -177,31 +163,27 @@
             })
     }
 
-    searchButton.addEventListener("click", function() {
-        var resultsName = "Pets:";
-        var queryKey = "?name=";
+    linkPets.addEventListener("click", function() {
+        var resultsName = "Owners:";
         var pageName = "ViewPet.html";
+        var queryKey = "?pet_id=";
+        var searchType = "pet";
+        var contents ="";
 
-        loadingModal.style.display="block";
-        searchType = "pet";
-
-        resultsHeader.innerHTML = "<h1>"+resultsName+"</h1>";
+        console.log("1");
         
         fetch("https://bwp-python-webapp.herokuapp.com/"+searchType, {
                 method:"GET",
             }).then(function(res){
                     res.json().then(function(json){
-                        var contents = "";
                         json.forEach(function(element) {
+                            var pageAddress = pageName + queryKey + element;
                             var components = element.split(':');
-                            var petName = components[0]
-                            var javaCommand = "onPetClicked('" + element + "')";
-                            contents += "<button onclick=\"" + javaCommand + "\">" + petName + "</button>";
+                            var petName = components[0];
+                            contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + petName + "</a>";
                         }, this);
-                        console.log(contents);
-                        resultsDiv.innerHTML = contents;
-                        loadingModal.style.display="none";
-                        resultsModal.style.display="block";
+                        petResultsDiv.innerHTML = contents;
+                        console.log("2");
                     })
                 })
     });

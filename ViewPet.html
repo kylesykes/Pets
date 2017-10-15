@@ -89,40 +89,30 @@
 				</p>
 				</form>
 				</div>
+
+				<div id="test1" class="col s12">
+						<button id="linkOwner" class="waves-effect waves-light btn-large"><i class="material-icons">insert_link</i>Link Owner</button>                 
+						<div id="ownerResults" class="collection">
+						</div>
+						</div>
 				</div>
-
-<button id="search" type="button">Link Owner</button>
-
-<div id="searchResults" class="modal">
-    <div class="modal-content animate">
-        <div id="resultsHeader" class="container"></div>
-        <div id="resultsField" class="container"></div>
-        <div class="container">
-            <button type="button" onclick="resultsModal.style.display='none'; resultsDiv.innerHTML=''" class="cancelbtn">Cancel</button>
-        </div>
-    </div>
-</div>
-
-<div id="loadingIcon" class="modal">
-    <div class="Aligner">
-        <div class="Aligner-item">
-            <div class="loader">Loading...</div>
-        </div>
-    </div>
 </div>
 
 </body>
 </html>
 
 <script>
-		var viewPet = document.getElementById('viewPet');
+
+	var viewPet = document.getElementById('viewPet');
     var loadingModal = document.getElementById('loadingIcon');
     var searchButton = document.getElementById("search");
     var resultsModal = document.getElementById('searchResults');
     var loadingModal = document.getElementById('loadingIcon');
     var resultsDiv = document.getElementById("resultsField");
 	var resultsHeader = document.getElementById("resultsHeader");
-	var petsList = document.getElementById('petsList')
+	var petsList = document.getElementById('petsList');
+	var ownerResults = document.getElementById('ownerResults');
+	var linkOwner = document.getElementById('linkOwner');
 	
 		function getParameterByName(name, url) {
 			if (!url) url = window.location.href;
@@ -165,12 +155,12 @@
 		}
 
 
-	    searchButton.addEventListener("click", function() {
+	    /*searchButton.addEventListener("click", function() {
         var resultsName = "Owners:";
         var queryKey = "?name=";
         var pageName = "ViewOwner.html";
 
-        loadingModal.style.display="block";
+        //loadingModal.style.display="block";
         searchType = "owner";
 
         resultsHeader.innerHTML = "<h1>"+resultsName+"</h1>";
@@ -188,11 +178,11 @@
                         }, this);
                         console.log(contents);
                         resultsDiv.innerHTML = contents;
-                        loadingModal.style.display="none";
-                        resultsModal.style.display="block";
+                        //loadingModal.style.display="none";
+                        //resultsModal.style.display="block";
                     })
                 })
-	});
+	});*/
 
 	var viewPet = document.getElementById('viewPet');
 		viewPet.addEventListener('submit', function(ev) {
@@ -218,4 +208,28 @@
 				window.location = "ViewPet.html?"+"pet_id="+json.name+":"+json.pet_id;
 			});
 		});
+
+		linkOwner.addEventListener("click", function(){
+        var resultsName = "Owners:";
+        var pageName = "ViewOwner.html";
+        var queryKey = "?owner_id=";
+        var searchType = "owner";
+        var contents ="";
+        
+        fetch("https://bwp-python-webapp.herokuapp.com/"+searchType, {
+                method:"GET",
+            }).then(function(res){
+                    res.json().then(function(json){
+                        json.forEach(function(element) {
+                            var pageAddress = pageName + queryKey + element;
+                            var components = element.split(':');
+                            var firstName = components[1];
+                            var lastName = components[2];
+                            contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + firstName + " " + lastName + "</a>";
+                        }, this);
+                        ownerResults.innerHTML = contents;
+                    })
+                })
+    });
+
 	</script>

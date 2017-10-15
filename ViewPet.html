@@ -192,9 +192,9 @@
                     })
                 })
 	});
-	
-	var petData = document.getElementById('petData');
-		petData.addEventListener('submit', function(ev) {
+
+	var viewPet = document.getElementById('viewPet');
+		viewPet.addEventListener('submit', function(ev) {
 			ev.preventDefault();
 			var petObj = {
 				name: ev.srcElement[0].value,

@@ -91,7 +91,7 @@
 				</div>
 
 				<div id="test1" class="col s12">
-						<button id="linkOwner" class="waves-effect waves-light btn-large"><i class="material-icons">insert_link</i>Link Owner</button>                 
+						<button id="linkOwner" class="waves-effect waves-light btn-large"><i class="material-icons right">insert_link</i>Link Owner</button>                 
 						<div id="ownerResults" class="collection">
 						</div>
 						</div>
@@ -226,7 +226,8 @@
                             var components = element.split(':');
                             var firstName = components[1];
                             var lastName = components[2];
-                            contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + firstName + " " + lastName + "</a>";
+							// contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + firstName + " " + lastName + "</a>";
+							contents += "<a style=\"cursor: pointer; \" onclick=\"onOwnerClicked('" + element + "')\" class=\"collection-item\">" + firstName + " " + lastName + "</a>";
                         }, this);
                         ownerResults.innerHTML = contents;
                     })

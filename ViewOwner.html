@@ -91,20 +91,19 @@
 </form>
 </div>
 
-<<<<<<< HEAD
-<button id="search" type="button">Link Pet</button>
+
+<!-- <button id="search" type="button">Link Pet</button>
 
 <div id="searchResults" class="modal">    
     <div class="modal-content animate">
         <div id="resultsHeader" class="container"></div>
         <div id="resultsField" class="container"></div>
         <div class="container">
-            <button type="button" onclick="resultsModal.style.display='none'; resultsDiv.innerHTML=''" class="cancelbtn">Cancel</button>
-=======
+            <button type="button" onclick="resultsModal.style.display='none'; resultsDiv.innerHTML=''" class="cancelbtn">Cancel</button> -->
+
 <div id="test1" class="col s12">
-        <button id="linkPets" class="waves-effect waves-light btn-large"><i class="material-icons">insert_link</i>Link Pet</button>                 
+        <button id="linkPets" class="waves-effect waves-light btn-large"><i class="material-icons right">insert_link</i>Link Pet</button>                 
         <div id="petResults" class="collection">
->>>>>>> d4cf816c45cee1848ab2f0ffd70b1be78191af39
         </div>
         </div>
 </div>
@@ -169,8 +168,6 @@
 				body: JSON.stringify(bodyObj),
 			})
 			.then(function(response) {
-                ownerList.innerHTML += "<li> " + petName + "</li>"
-
             })
     }
 
@@ -191,7 +188,8 @@
                             var pageAddress = pageName + queryKey + element;
                             var components = element.split(':');
                             var petName = components[0];
-                            contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + petName + "</a>";
+                            // contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + petName + "</a>";
+                            contents += "<a style=\"cursor: pointer;\" onclick=\"onPetClicked('" + element + "')\" class=\"collection-item\">" + petName + "</a>";
                         }, this);
                         petResultsDiv.innerHTML = contents;
                         console.log("2");

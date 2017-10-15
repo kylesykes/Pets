@@ -2,84 +2,98 @@
 
 <html>
 <head>
-<script src="pets.js"></script>
-<link rel="stylesheet" href="pets.css">
+        <script src="pets.js"></script>
+    
+        <meta charset="utf-8">
+        <title>Update Owner</title>
 
-<meta charset="utf-8">
-<title>Update Owner</title>
-</head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    </head>
 
 <body>
 
-<div id="wrapper">
-<div id="header">
-<h1>Top Dog Information Systems</h1>
-</div>
-</div>
+        <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo center">Top Dog Information Systems</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="info.html">Info</a></li>
+                    </ul>
+                </div>
+            </nav>
 
 
-<div id="container">
-<h3>Update Owner</h3>
+            <div style="margin-left: 10%; margin-right: 10%; margin-top: 5%;">
+                    <h4>Update Owner</h4>
+                    <div class="row">
+                    <form class="col s12" method="POST" id="ownerForm">
+                        <div class="row">
 
-<form id="ownerForm">
+	<form class="col s12" method="POST" id="registerForm">
+		<div class="row">
 
-<table>
-<tbody>
+		<div class="input-field col s6">
+			<i class="material-icons prefix">account_circle</i>
+			<input placeholder="Username" name="username" type="text" class="validate">
+			<label for="name"> Username</label>
+		</div>
 
-<tr>
-<td><lable>Username</lable></td>
-<td><input type="text" name="username"/>
-</tr>
+		<div class="input-field col s6">
+			<i class="material-icons prefix">enhanced_encryption</i>
+			<input placeholder="Password" name="password" type="password" class="validate">
+			<label for="name"> Password</label>
+		</div>
+		
+		<div class="input-field col s6">
+			<i class="material-icons prefix">person_outline</i>
+			<input placeholder="First Name" name="firstName" type="text" class="validate">
+			<label for="name"> First Name</label>
+		</div>	
 
-<tr>
-<td><lable>Password</lable></td>
-<td><input type="password" name="password"/>
-</tr>
+		<div class="input-field col s6">
+			<i class="material-icons prefix">person</i>
+			<input placeholder="Last Name" name="lastName" type="text" class="validate">
+			<label for="name"> Last Name</label>
+		</div>
 
-<tr>
-<td><lable>First Name</lable></td>
-<td><input type="text" name="firstName"/>
-</tr>
+		<div class="input-field col s6">
+			<i class="material-icons prefix">phone</i>
+			<input type="tel" placeholder="Phone Number" name="phoneNumber" type="text" class="validate">
+			<label for="name"> Phone Number</label>
+		</div>
 
-<tr>
-<td><lable>Last Name</lable></td>
-<td><input type="text" name="lastName"/>
-</tr>
+		<div class="input-field col s6">
+			<i class="material-icons prefix">map</i>
+			<input placeholder="Address" name="address" type="text" class="validate">
+			<label for="name"> Address</label>
+		</div>
 
-<tr>
-<td><lable>Phone Number</label></td>
-<td><input type="text" name="phoneNumber"/>
-<tr>
+		<div class="input-field col s6">
+				<i class="material-icons prefix">mail_outline</i>
+			<input type="email" placeholder="Email" name="email" type="text" class="validate">
+			<label for="name"> Email</label>
+		</div>
 
-<tr>
-<td><lable>Address</label></td>
-<td><input type="text" name="address"/>
-<tr>
+<div class="col-sm-43"></div>
 
-<tr>
-<td><lable>Email</label></td>
-<td><input type="email" name="email"/>
-<tr>
-
-<ul id= "ownerList">
-        
-</ul>
-
-<tr> 
-<td><input type="submit" value="Update" class="save"/>
-</tr>
-
-</tbody>
-</table>
-
-</form>
-
-
-<div style="clear;both;"></div>
+<div style="clear:both;"></div>
 
 <p>
-	<a href="home.html">Back to Home Page</a>
+	<button type="submit" class="btn waves-effect waves-light" value="Submit" name="action" onclick="document.getElementById('id01').style.display='none'">Submit
+		<i class="material-icons right">send</i>
+	</button>
+	<a class="btn waves-effect waves-light" name="action" href="home.html"><i class="material-icons right">cancel</i> Cancel</a>
 </p>
+</form>
+</div>
 </div>
 
 <button id="search" type="button">Link Pet</button>

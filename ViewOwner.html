@@ -61,6 +61,10 @@
 <td><input type="text" name="email"/>
 <tr>
 
+<ul id= "ownerList">
+        
+</ul>
+
 <tr> 
 <td><input type="submit" value="Submit" class="save"/>
 </tr>
@@ -110,6 +114,7 @@
     var loadingModal = document.getElementById('loadingIcon');
     var resultsDiv = document.getElementById("resultsField");
     var resultsHeader = document.getElementById("resultsHeader");
+    var petList = document.getElementById("petList")
 
     loadingModal.style.display="block";
 
@@ -141,6 +146,22 @@
         loadingModal.style.display="none";
     });
 
+    function onPetClicked(petName) {
+        console.log(petName)
+        var bodyObj = {
+            owner_username: getParameterByName('username'),
+            pet_id: petName,
+        };
+        fetch("https://bwp-python-webapp.herokuapp.com/link", {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(bodyObj),
+			})
+			.then(function(response) {
+				ownerList.innerHTML += "<li> " + petName + "</li>"
+			})
+    }
+
     searchButton.addEventListener("click", function() {
         var resultsName = "Pets:";
         var queryKey = "?name=";
@@ -157,7 +178,7 @@
                     res.json().then(function(json){
                         var contents = "";
                         json.forEach(function(element) {
-                            var javaCommand = "";
+                            var javaCommand = "onPetClicked('" + element + "')";
                             contents += "<button onclick=\"" + javaCommand + "\">" + element + "</button>";
                         }, this);
                         console.log(contents);

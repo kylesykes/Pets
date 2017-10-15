@@ -102,7 +102,7 @@
             <button type="button" onclick="resultsModal.style.display='none'; resultsDiv.innerHTML=''" class="cancelbtn">Cancel</button> -->
 
 <div id="test1" class="col s12">
-        <button id="linkPets" class="waves-effect waves-light btn-large"><i class="material-icons right">insert_link</i>Link Pet</button>                 
+        <button id="linkPets" class="btn waves-effect waves-light"><i class="material-icons right">insert_link</i>Link Pet</button>                 
         <div id="petResults" class="collection">
         </div>
         </div>
@@ -189,7 +189,7 @@
                             var components = element.split(':');
                             var petName = components[0];
                             // contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + petName + "</a>";
-                            contents += "<a style=\"cursor: pointer;\" onclick=\"onPetClicked('" + element + "')\" class=\"collection-item\">" + petName + "</a>";
+                            contents += "<a style=\"cursor: pointer; \" onclick=\"onPetClicked('" + element + "')\" class=\"collection-item\">" + petName + "</a>";
                         }, this);
                         petResultsDiv.innerHTML = contents;
                         console.log("2");

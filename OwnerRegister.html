@@ -106,8 +106,10 @@
 			body: JSON.stringify(ownerObj),
 		})
 		.then(function(response) {
-			console.log(response)
-			window.location = "ViewOwner.html?"+"username="+ownerObj.username;
+			return response.json();
+		})
+		.then(function(json) {
+			window.location = "ViewOwner.html?"+"owner_id="+json.owner_id;
 		});
 	});
 </script>

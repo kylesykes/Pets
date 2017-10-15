@@ -153,7 +153,7 @@
 		function onOwnerClicked(ownerName) {
 			var bodyObj = {
 				pet_id: getParameterByName('pet_id'),
-				owner_username: ownerName,
+				owner_id: ownerName,
 			};
 			fetch("https://bwp-python-webapp.herokuapp.com/link", {
 				method: 'POST',

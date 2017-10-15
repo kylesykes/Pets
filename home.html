@@ -80,7 +80,7 @@
     function loadOwners() {
         var resultsName = "Owners:";
         var pageName = "ViewOwner.html";
-        var queryKey = "?username=";
+        var queryKey = "?owner_id=";
         var searchType = "owner";
         var contents ="";
         
@@ -90,7 +90,10 @@
                     res.json().then(function(json){
                         json.forEach(function(element) {
                             var pageAddress = pageName + queryKey + element;
-                            contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + element + "</a>";
+                            var components = element.split(':');
+                            var firstName = components[1];
+                            var lastName = components[2];
+                            contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + firstName + " " + lastName + "</a>";
                         }, this);
                         ownerResultsDiv.innerHTML = contents;
                     })
@@ -111,7 +114,9 @@
                     res.json().then(function(json){
                         json.forEach(function(element) {
                             var pageAddress = pageName + queryKey + element;
-                            contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + element + "</a>";
+                            var components = element.split(':');
+                            var petName = components[0];
+                            contents += "<a href=\"" + pageAddress + "\" class=\"collection-item\">" + petName + "</a>";
                         }, this);
                         petResultsDiv.innerHTML = contents;
                     })

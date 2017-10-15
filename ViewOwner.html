@@ -128,7 +128,7 @@
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
-    fetch('https://bwp-python-webapp.herokuapp.com/owner?username='+getParameterByName('username'), {
+    fetch('https://bwp-python-webapp.herokuapp.com/owner?owner_id='+getParameterByName('owner_id'), {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     })
@@ -149,7 +149,7 @@
     function onPetClicked(petName) {
         console.log(petName)
         var bodyObj = {
-            owner_username: getParameterByName('username'),
+            owner_id: getParameterByName('owner_id'),
             pet_id: petName,
         };
         fetch("https://bwp-python-webapp.herokuapp.com/link", {
@@ -158,8 +158,9 @@
 				body: JSON.stringify(bodyObj),
 			})
 			.then(function(response) {
-				ownerList.innerHTML += "<li> " + petName + "</li>"
-			})
+                ownerList.innerHTML += "<li> " + petName + "</li>"
+
+            })
     }
 
     searchButton.addEventListener("click", function() {

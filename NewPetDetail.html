@@ -3,100 +3,86 @@
 <html>
 <head>
 	<script src="pets.js"></script>
-       <link rel="stylesheet" href="pets.css">
 
 	<meta charset="utf-8">
 	<title>New Pet</title>
-
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 
 <body>
 
-<div id="wrapper">
-<div id="header">
-<h1>Top Dog Information Systems</h1>
-</div>
-</div>
+		<nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo center">Top Dog Information Systems</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="info.html">Info</a></li>
+                    </ul>
+                </div>
+            </nav>
 
-
-<div id="container-fluid">
-<h3>Add New Pet</h3>
+<div style="margin-left: 10%; margin-right: 10%; margin-top: 5%;">
+<h4>Add New Pet</h4>
 <div class="row">
-  <div class="col-sm-4"></div>
+	<form class="col s12" method="POST" id="petData">
+		<div class="row">
+			<div class="input-field col s6">
+				<input placeholder="Name" name="name" type="text" class="validate">
+				<label for="name"> Name</label>
+			</div>
 
-	<div class="col-sm-4">
-		<form method="POST" id="petData" >
+			<div class="input-field col s6">
+				<input placeholder="Breed" name="breed" type="text" class="validate">
+				<label for="name"> Breed</label>
+			</div>
+			
+			<div class="input-field col s6">
+				<input placeholder="Age" name="age" type="text" class="validate">
+				<label for="name"> Age</label>
+			</div>
+			
+			<div class="input-field col s6">
+				<input placeholder="Chip ID" name="chip" type="text" class="validate">
+				<label for="name"> Chip ID</label>
+			</div>
+			
+			<div class="input-field col s6">
+				<input placeholder="Rescued or Surrendered?" name="howCheckedIn" type="text" class="validate">
+				<label for="name"> Rescued or Surrendered?</label>
+			</div>
 
-		<table >
-		<tbody >
+			<div class="input-field col s6">
+				<t5>Upload Picture</t5>
+				<button class="btn waves-effect waves-light" name="action" onclick="'">Choose File
+					<i class="material-icons right">add</i>
+				</button>
+			</div>
 
-		<tr>
-		<td><label>Name</label></td>
-		<td><input type="text" name="name"/></td>
-		</tr>
-
-		<tr>
-		<td><label>Breed</label></td>
-		<td><input type="text" name="breed"/></td>
-		</tr>
-
-		<tr>
-		<td><label>Age</label></td>
-		<td><input type="text" name="age"/></td>
-		</tr>
-
-		<tr>
-		<td><label>Chipped</label></td>
-		<td><input type="text" name="chip"/></td>
-		</tr>
-
-		<tr>
-		<td><label>Rescued or Surrendered?</label></td>
-		<td><input type="text" name="howCheckedIn"/></td>
-		<tr>
-
-		<tr>
-		<td><label>Picture Upload</label></td>
-		<td>
-			<div class="">
-		      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
-		    </div>
-		    <p></p>
-		</td>
-		</tr>
-
-
-		<tr>
-		<td><label>Video Upload</label></td>
-		<td>
-			<div class="">
-		      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="">Choose File</button>
-		    </div>
-		</td>
-		<tr>
-
-		<tr> 
-		<td><input type="submit" value="Submit" class="save"/></td>
-		</tr>
-
-		</tbody>
-		</table>
-
-		</form>
-	</div>
+			<div class="input-field col s6">
+				<t5>Upload Picture</t5>
+				<button class="btn waves-effect waves-light" name="action" onclick="'">Choose File
+					<i class="material-icons right">add</i>
+				</button>
+			</div>
+	</form>
 <div class="col-sm-43"></div>
-</div>	
 
 <div style="clear;both;"></div>
 
 <p>
-	<a href="home.html">Back to Home Page</a>
+	<button class="btn waves-effect waves-light" name="action" onclick="document.getElementById('id01').style.display='none'">Submit
+		<i class="material-icons right">send</i>
+	</button>
+	<a class="btn waves-effect waves-light" name="action" href="home.html"><i class="material-icons right">cancel</i> Cancel</a>
 </p>
+</div>
 </div>
 </body>
 </html>

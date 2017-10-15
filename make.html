@@ -3,6 +3,7 @@
     <head>
         <script src="pets.js"></script>
         <link rel="stylesheet" href="pets.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 <style>
 
@@ -10,9 +11,11 @@
 <body>
 
 <div id="main">
+<div id="topdog">  
 <h2 id="title">Pet Login</h2>
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+</div>
 </div>
 
 <div id="id01" class="modal">
@@ -30,13 +33,13 @@
       <label id="loginLbl"><b>Password</b></label>
       <input type="password" id="password" placeholder="Enter Password" name="psw" required>
         
-      <button type="submit" value="Login" id="submit" onclick="testvalidate()">Login</button>
+      <button type="submit" value="Login" id="submit" onclick="validate()">Login</button>
       <input type="checkbox" checked="checked"><label style="color:blue;"> Remember me</label>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">forgot password ?</a></span>
+      <span class="psw"><a href="#">Forgot password ?</a></span>
     </div>
   </form>
 </div>
@@ -52,30 +55,22 @@ window.onclick = function(event) {
     }
 }
 
-function testvalidate(){
-  alert("Hello  World");
+function validate(){
+
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
   if ( username == "user" && password == "pets"){
-     window.location = "NewPetDetail.html";
+    alert("Successful login");
+    window.open("home.html");
    }else{
-    alert("Invalid login. Pleasse try again.";
+    alert("Invalid login. Please try again.");
    }
  
 }
 
-function validate(){
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
-  if ( username == "user" && password == "pets"){
-  alert ("Login successfully");
-  location.href = 'home.html'; // Redirecting to other page.
-  //window.location = "home.html";  
- 
-  }
-    else{
-      alert("keep a' knockin' but ya can't come in....");
-      return false;
-    }
-}
+
+
 </script>
 
 </body>

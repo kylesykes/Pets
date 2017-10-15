@@ -52,6 +52,10 @@
 <td><input type="text" name="howCheckedIn"/>
 <tr>
 
+<ul id= "petsList">
+
+</ul>
+
 <tr>
 <td><lable>Pictures</lable></td>
 <td>
@@ -118,7 +122,8 @@
     var resultsModal = document.getElementById('searchResults');
     var loadingModal = document.getElementById('loadingIcon');
     var resultsDiv = document.getElementById("resultsField");
-    var resultsHeader = document.getElementById("resultsHeader");
+	var resultsHeader = document.getElementById("resultsHeader");
+	var petsList = document.getElementById('petsList')
 	
 		function getParameterByName(name, url) {
 			if (!url) url = window.location.href;
@@ -130,7 +135,7 @@
 			return decodeURIComponent(results[2].replace(/\+/g, " "));
 		}
 	
-		fetch('https://bwp-python-webapp.herokuapp.com/pet?name='+getParameterByName('name'), {
+		fetch('https://bwp-python-webapp.herokuapp.com/pet?pet_id='+getParameterByName('pet_id'), {
 			method: 'GET',
 			headers: { 'Content-Type': 'application/json' },
 		})
@@ -144,6 +149,22 @@
 			viewPet[3].value = jsonObj.chipped;
 			viewPet[4].value = jsonObj.howCheckedIn;
 		});
+
+		function onOwnerClicked(ownerName) {
+			var bodyObj = {
+				pet_id: getParameterByName('pet_id'),
+				owner_username: ownerName,
+			};
+			fetch("https://bwp-python-webapp.herokuapp.com/link", {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(bodyObj),
+			})
+			.then(function(response) {
+				petsList.innerHTML += "<li> " + ownerName + "</li>"
+			})
+		}
+
 
 	    searchButton.addEventListener("click", function() {
         var resultsName = "Owners:";
@@ -161,7 +182,7 @@
                     res.json().then(function(json){
                         var contents = "";
                         json.forEach(function(element) {
-                            var javaCommand = "";
+                            var javaCommand = "onOwnerClicked('" + element + "')";
                             contents += "<button onclick=\"" + javaCommand + "\">" + element + "</button>";
                         }, this);
                         console.log(contents);

@@ -76,7 +76,7 @@
 <tr>
 
 <tr> 
-<td><input type="submit" value="Submit" class="save"/>
+<td><input type="submit" value="Update" class="save"/>
 </tr>
 
 </tbody>
@@ -191,5 +191,30 @@
                         resultsModal.style.display="block";
                     })
                 })
-    });
+	});
+	
+	var petData = document.getElementById('petData');
+		petData.addEventListener('submit', function(ev) {
+			ev.preventDefault();
+			var petObj = {
+				name: ev.srcElement[0].value,
+				breed: ev.srcElement[1].value,
+				age: ev.srcElement[2].value,
+				chipped: ev.srcElement[3].value,
+				howCheckedIn: ev.srcElement[4].value,
+			};
+			console.log(petObj);
+			fetch('https://bwp-python-webapp.herokuapp.com/pet', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(petObj),
+			})
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(json) {
+				console.log(json)
+				window.location = "ViewPet.html?"+"pet_id="+json.name+":"+json.pet_id;
+			});
+		});
 	</script>
